@@ -10,8 +10,20 @@
     const currentSongIndex = album.songs.indexOf(player.currentPlaying);
     const nextSongIndex = currentSongIndex + 1;
     if (nextSongIndex >= album.songs.length) { return; }
-    
+
     const nextSong = album.songs[nextSongIndex];
     player.playPause(nextSong);
   });
+
+$('button#previous').on('click', function () {
+  if (player.playState !== 'playing') { return; }
+
+  const currentSongIndex = album.songs.indexOf(player.currentPlaying);
+  const previousSongIndex = previousSongIndex - 1;
+  if (previousSongIndex < 0) { return; }
+
+  const previousSong = album.songs[previousSongIndex];
+  player.playPause(previousSong);
+});
+
 }
